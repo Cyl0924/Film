@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.ShowActivity"
+    android:background="@mipmap/bitmap"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/dp_35"
+        android:layout_width="@dimen/dp_295"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/dp_60"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_marginTop="@dimen/dp_6"
+                android:src="@mipmap/register_icon_name_default"
+                android:layout_width="@dimen/dp_25"
+                android:layout_height="@dimen/dp_25" />
+
+            <EditText
+                android:id="@+id/regis_name"
+                android:hint="昵称"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_38" />
+
+        </LinearLayout>
+        <LinearLayout
+        android:layout_marginTop="@dimen/dp_30"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_marginTop="@dimen/dp_6"
+            android:src="@mipmap/register_icon_sex_default"
+            android:layout_width="@dimen/dp_25"
+            android:layout_height="@dimen/dp_25" />
+
+        <EditText
+            android:id="@+id/regis_sex"
+            android:hint="性别"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_38" />
+
+    </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="@dimen/dp_30"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_marginTop="@dimen/dp_6"
+                android:src="@mipmap/register_icon_date_default"
+                android:layout_width="@dimen/dp_25"
+                android:layout_height="@dimen/dp_25" />
+
+            <EditText
+                android:id="@+id/regis_data"
+                android:hint="生日"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_38" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="@dimen/dp_30"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_marginTop="@dimen/dp_6"
+                android:src="@mipmap/log_icon_phone_default"
+                android:layout_width="@dimen/dp_25"
+                android:layout_height="@dimen/dp_25" />
+
+            <EditText
+                android:id="@+id/regis_phone"
+                android:hint="手机号"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_38" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="@dimen/dp_30"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_marginTop="@dimen/dp_6"
+                android:src="@mipmap/register_icon_mail_default"
+                android:layout_width="@dimen/dp_25"
+                android:layout_height="@dimen/dp_25" />
+
+            <EditText
+                android:id="@+id/regis_email"
+                android:hint="邮箱"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_38" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="@dimen/dp_30"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_marginTop="@dimen/dp_6"
+                android:src="@mipmap/log_icon_lock_default"
+                android:layout_width="@dimen/dp_25"
+                android:layout_height="@dimen/dp_25" />
+
+            <EditText
+                android:id="@+id/regis_pwd"
+                android:hint="密码"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_38" />
+
+        </LinearLayout>
+        <Button
+            android:id="@+id/btn_regis"
+            android:background="@drawable/btn_bag"
+            android:gravity="center"
+            android:textSize="@dimen/dp_15"
+            android:text="注册"
+            android:layout_marginTop="@dimen/dp_50"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
