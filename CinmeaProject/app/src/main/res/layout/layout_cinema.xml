@@ -6,5 +6,29 @@
     tools:context=".activity.MainActivity"
     android:fitsSystemWindows="true">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+       <LinearLayout
+           android:orientation="horizontal"
+           android:background="@mipmap/filmbg"
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/dp_194">
+
+       </LinearLayout>
+
+        <recycler.coverflow.RecyclerCoverFlow
+            android:layout_centerHorizontal="true"
+            android:id="@+id/RecFlow_id"
+            android:layout_marginTop="@dimen/dp_50"
+            android:layout_width="@dimen/dp_260"
+            android:layout_height="@dimen/dp_200">
+
+        </recycler.coverflow.RecyclerCoverFlow>
+
+
+    </RelativeLayout>
+
 
 </LinearLayout>

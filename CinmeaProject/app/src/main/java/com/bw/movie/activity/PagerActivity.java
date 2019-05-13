@@ -35,8 +35,6 @@ public class PagerActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         final VPAdapter adapter = new VPAdapter(getSupportFragmentManager());
         VP.setAdapter(adapter);
-        int filmW = FilmBtn.getWidth();
-        int filmH = FilmBtn.getHeight();
         FilmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

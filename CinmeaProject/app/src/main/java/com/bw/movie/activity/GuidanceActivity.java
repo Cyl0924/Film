@@ -14,8 +14,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bw.movie.R;
-import com.youth.banner.Banner;
-import com.youth.banner.BannerConfig;
 
 import java.util.ArrayList;
 import java.util.List;

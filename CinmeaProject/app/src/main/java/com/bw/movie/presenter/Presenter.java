@@ -4,8 +4,12 @@ import android.util.Log;
 
 import com.bw.movie.bean.LoginBean;
 import com.bw.movie.bean.RegisterBean;
+import com.bw.movie.bean.RoateBean;
 import com.bw.movie.contract.ContractInterface;
 import com.bw.movie.model.Model;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @Author：Chen
@@ -42,6 +46,16 @@ public class Presenter implements ContractInterface.PresenterInterface {
             @Override
             public void returnLogin(LoginBean loginBean) {
                 viewInterface.RegisterView(loginBean);
+            }
+        });
+    }
+
+    @Override
+    public void DataPresenter(HashMap<String , Integer> map) {
+        model.DataMode(map, new Model.ToDataCall() {
+            @Override
+            public void returnDatas(RoateBean roateBean) {
+                viewInterface.RegisterView(roateBean);
             }
         });
     }

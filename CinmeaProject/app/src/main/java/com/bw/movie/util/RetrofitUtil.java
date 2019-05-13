@@ -6,6 +6,10 @@ import com.bw.movie.api.Api;
 import com.bw.movie.bean.LoginBean;
 import com.bw.movie.bean.RegisterBean;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import okhttp3.ResponseBody;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -38,7 +42,9 @@ public class RetrofitUtil {
     public static RetrofitUtil getUtil(){
         if (util == null){
             synchronized (RetrofitUtil.class){
-                util = new RetrofitUtil();
+                if(util == null){
+                    util = new RetrofitUtil();
+                }
             }
         }
         return util;
@@ -54,5 +60,10 @@ public class RetrofitUtil {
         Observable observable = api.doLogin(url,phone,pwd);
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
-    
+
+    public void ToData(String url, int userId , String sessionId, HashMap<String , Integer> map, Observer<ResponseBody> observer){
+        Observable observable = api.doGet(url,userId,sessionId,map);
+        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+
 }
