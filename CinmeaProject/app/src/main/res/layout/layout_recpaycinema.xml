@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MainActivity"
+    android:fitsSystemWindows="true">
+
+    <RelativeLayout
+        android:layout_marginTop="@dimen/dp_15"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:background="@drawable/lin_bgyin"
+        android:layout_width="@dimen/dp_324"
+        android:layout_height="@dimen/dp_100">
+
+        <LinearLayout
+            android:id="@+id/LinDown1"
+            android:orientation="horizontal"
+            android:layout_centerInParent="true"
+            android:layout_width="@dimen/dp_309"
+            android:layout_height="@dimen/dp_80">
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:layout_marginLeft="@dimen/dp_0_5"
+                android:id="@+id/PaySim"
+                android:layout_width="@dimen/dp_80"
+                android:layout_height="@dimen/dp_80" />
+
+            <LinearLayout
+                android:layout_marginLeft="@dimen/dp_13"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                
+                <TextView
+                    android:id="@+id/PayCinName"
+                    android:textSize="@dimen/dp_14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp_20" />
+                
+                <TextView
+                    android:textSize="@dimen/dp_12"
+                    android:id="@+id/PayCinAdd"
+                    android:layout_width="@dimen/dp_201"
+                    android:layout_height="@dimen/dp_35" />
+
+                <LinearLayout
+                    android:background="#BFEFFF"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/PayCinKm"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_width="@dimen/dp_50"
+                        android:layout_height="wrap_content" />
+
+                    <ImageView
+                        android:id="@+id/PayCinLove"
+                        android:layout_marginLeft="@dimen/dp_130"
+                        android:src="@mipmap/com_icon_collection_default"
+                        android:layout_width="@dimen/dp_22"
+                        android:layout_height="@dimen/dp_22" />
+                    
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

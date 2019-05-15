@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MainActivity"
+    android:fitsSystemWindows="true">
+
+    <RelativeLayout
+        android:layout_marginTop="@dimen/dp_20"
+        android:background="@mipmap/movie_bg_level"
+        android:layout_width="@dimen/dp_327"
+        android:layout_height="@dimen/dp_149">
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/dp_10"
+        android:id="@+id/Lin_Details"
+        android:orientation="horizontal"
+        android:layout_width="@dimen/dp_327"
+        android:layout_height="@dimen/dp_149">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/XQ_sim"
+            android:layout_marginLeft="@dimen/dp_12"
+            android:layout_width="@dimen/dp_114"
+            android:layout_height="@dimen/dp_158" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_30"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:textColor="@android:color/white"
+                    android:id="@+id/XQ_name"
+                    android:textSize="@dimen/dp_16"
+                    android:layout_width="@dimen/dp_64"
+                    android:layout_height="@dimen/dp_22" />
+
+                <ImageView
+                    android:id="@+id/XQ_love"
+                    android:layout_marginLeft="@dimen/dp_87"
+                    android:src="@mipmap/com_icon_collection_default"
+                    android:layout_width="@dimen/dp_24"
+                    android:layout_height="@dimen/dp_24" />
+
+            </LinearLayout>
+
+            <TextView
+                android:textColor="@android:color/white"
+                android:id="@+id/XQ_details"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+    
+</RelativeLayout>

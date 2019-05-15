@@ -8,6 +8,7 @@ import java.util.Map;
 
 import okhttp3.ResponseBody;
 import retrofit2.http.Field;
+import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
@@ -40,4 +41,21 @@ public interface Api {
     //常用请求数据接口
     @GET
     public Observable<ResponseBody> doGet(@Url String url , @Header("userId") int userId , @Header("sessionId") String sessionId , @QueryMap HashMap<String,Integer> map);
+
+    @GET
+    public Observable<ResponseBody> toData(@Url String url , @Header("userId") int userId , @Header("sessionId") String sessionId , @Query("movieId") int movieId);
+
+    @GET
+    public Observable<ResponseBody> toIntData(@Url String url ,@Header("userId") int userId , @Header("sessionId") String sessionId , @QueryMap HashMap<String,Integer> map);
+
+    //movieApi/movie/v1/verify/movieComment
+    @FormUrlEncoded
+    @POST
+    public Observable<ResponseBody> ObjectData(@Url String url ,@Header("userId") int userId , @Header("sessionId") String sessionId,@FieldMap HashMap<String,Object> map);
+
+    @GET
+    public Observable<ResponseBody> AllData(@Url String url,@Header("userId") int userId , @Header("sessionId") String sessionId,@QueryMap HashMap<String,Object> map);
+    //movieApi/movie/v1/findCinemasListByMovieId
+
+
 }

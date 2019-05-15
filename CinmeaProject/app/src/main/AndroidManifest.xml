@@ -22,7 +22,12 @@
         <activity android:name=".activity.GuidanceActivity" />
         <activity android:name=".activity.ShowActivity" />
         <activity android:name=".activity.RegisterActivity" />
-        <activity android:name=".activity.PagerActivity"></activity>
+        <activity android:name=".activity.PagerActivity" />
+        <activity android:name=".activity.DetailsActivity" />
+        <activity android:name=".activity.MoiveDetailsActivity" />
+        <activity android:name=".activity.PayTicketActivity" />
+        <activity android:name=".activity.ScheduleActivity" />
+        <activity android:name=".activity.SelectSeatActivity"></activity>
     </application>
 
 </manifest>

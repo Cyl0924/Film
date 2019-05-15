@@ -32,7 +32,7 @@ public class RetrofitUtil {
 
     private RetrofitUtil(){
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://mobile.bwstudent.com/")
+                    .baseUrl("http://mobile.bwstudent.com/")
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
@@ -63,6 +63,27 @@ public class RetrofitUtil {
 
     public void ToData(String url, int userId , String sessionId, HashMap<String , Integer> map, Observer<ResponseBody> observer){
         Observable observable = api.doGet(url,userId,sessionId,map);
+        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+
+    public void ToIntData(String url, int userId , String sessionId, int movieId, Observer<ResponseBody> observer){
+        Observable observable = api.toData(url,userId,sessionId,movieId);
+        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+
+    public void toIntMap(String url, int userId , String sessionId,HashMap<String,Integer> map,Observer<ResponseBody> observer){
+        Observable observable = api.toIntData(url,userId,sessionId,map);
+        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+
+    public void objectData(String url, int userId , String sessionId,HashMap<String,Object> Smap,Observer<ResponseBody> observer){
+        Observable observable = api.ObjectData(url,userId,sessionId,Smap);
+        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+
+    }
+
+    public void AllGet(String url, int userId , String sessionId,HashMap<String,Object> Smap,Observer<ResponseBody> observer){
+        Observable observable = api.AllData(url,userId,sessionId,Smap);
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 

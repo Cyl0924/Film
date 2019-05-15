@@ -56,6 +56,8 @@ public class ShowActivity extends AppCompatActivity implements ContractInterface
             String lphone = sp.getString("phone", null);
             String lpwd = sp.getString("pwd", null);
             presenterInterface.LoginPresenter(lphone,lpwd);
+            RemberPwd.setChecked(true);
+            AutomaticLogin.setChecked(true);
         }
 
         if(sp.getBoolean("rember",false)){

@@ -5,7 +5,12 @@ import android.content.Context;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 
+import com.bw.movie.bean.ComingBean;
+import com.bw.movie.bean.ReleaseBean;
+import com.bw.movie.bean.RoateBean;
 import com.facebook.drawee.backends.pipeline.Fresco;
+
+import java.util.List;
 
 /**
  * @Author：Chen
@@ -25,6 +30,21 @@ public class App extends Application {
     public static String phones;
     public static int sex;
     public static int Windowswidth;
+    public static List<ComingBean.ResultBean> AClist;
+    public static List<ReleaseBean.ResultBean> ARlist;
+    public static List<RoateBean.ResultBean> AHlist;
+    public static int Biaoshi = 0;
+    public static int MoiveId;
+    public static String MoiveName;
+    public static int CinemasId;
+    public static String CinemaName;
+    public static String CinemaAdd;
+    public static String StartTime;
+    public static String EndTime;
+    public static String CinemaHall;
+    public static int ScheduleId;
+    public static Double SeatMoney;
+    public static int DrawSeat;
 
     @Override
     public void onCreate() {

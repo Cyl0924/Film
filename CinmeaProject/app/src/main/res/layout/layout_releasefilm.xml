@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    tools:context=".activity.MainActivity"
+    android:fitsSystemWindows="true"
+    android:layout_marginLeft="@dimen/dp_20">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        fresco:roundedCornerRadius="@dimen/dp_5"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:id="@+id/ReleaseFilmSim_id"
+        android:layout_width="@dimen/dp_100"
+        android:layout_height="@dimen/dp_150" />
+
+<!--    //#CDCDC1
+    <TextView
+        android:layout_marginTop="@dimen/dp_182"
+        android:id="@+id/HotFimTv_id"
+        android:layout_width="@dimen/dp_158"
+        android:layout_height="@dimen/dp_38" />-->
+
+</RelativeLayout>
