@@ -227,7 +227,9 @@ public class SelectSeatActivity extends AppCompatActivity implements ContractInt
         tFalse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(SelectSeatActivity.this,ScheduleActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
         ttrue.setOnClickListener(new View.OnClickListener() {

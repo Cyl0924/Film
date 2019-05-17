@@ -8,12 +8,28 @@
     android:fitsSystemWindows="true"
     android:layout_marginLeft="@dimen/dp_20">
 
-    <com.facebook.drawee.view.SimpleDraweeView
-        fresco:roundedCornerRadius="@dimen/dp_5"
-        android:layout_marginLeft="@dimen/dp_20"
-        android:id="@+id/ReleaseFilmSim_id"
-        android:layout_width="@dimen/dp_100"
-        android:layout_height="@dimen/dp_150" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_150">
+
+
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            fresco:roundedCornerRadius="@dimen/dp_5"
+            android:id="@+id/ReleaseFilmSim_id"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="@dimen/dp_150" />
+
+        <LinearLayout
+            android:layout_width="@dimen/dp_14"
+            android:layout_height="@dimen/dp_150">
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
 
 <!--    //#CDCDC1
     <TextView
