@@ -10,6 +10,7 @@ import com.bw.movie.bean.ReleaseBean;
 import com.bw.movie.bean.RoateBean;
 import com.facebook.drawee.backends.pipeline.Fresco;
 
+import java.security.KeyPairGenerator;
 import java.util.List;
 
 /**
@@ -45,11 +46,14 @@ public class App extends Application {
     public static int ScheduleId;
     public static Double SeatMoney;
     public static int DrawSeat;
+    public static Context context;
 
     @Override
     public void onCreate() {
         super.onCreate();
         Fresco.initialize(this);
+        context = getApplicationContext();
+        
         WindowManager wm = (WindowManager) this.getSystemService(Context.WINDOW_SERVICE);
         Windowswidth = wm.getDefaultDisplay().getWidth();
     }

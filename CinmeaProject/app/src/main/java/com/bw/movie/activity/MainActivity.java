@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bw.movie.R;
+import com.bw.movie.util.RetrofitUtil;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -35,8 +36,6 @@ public class MainActivity extends AppCompatActivity {
                     editor = sp.edit();
                     editor.putBoolean("guidance",true);
                     editor.commit();
-                    Intent intent = new Intent(MainActivity.this,GuidanceActivity.class);
-                    startActivity(intent);
                 }
             }
         }
@@ -55,8 +54,14 @@ public class MainActivity extends AppCompatActivity {
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(MainActivity.this,ShowActivity.class);
-                    startActivity(intent);
+                    boolean b =RetrofitUtil.getUtil().isNetworkConnected(MainActivity.this);
+                    if(b){
+                        Intent intent = new Intent(MainActivity.this,ShowActivity.class);
+                        startActivity(intent);
+                    }else{
+                        Intent intent = new Intent(MainActivity.this,NetworkActivity.class);
+                        startActivity(intent);
+                    }
                 }
             });
         }else{

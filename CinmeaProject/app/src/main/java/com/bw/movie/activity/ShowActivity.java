@@ -1,8 +1,12 @@
 package com.bw.movie.activity;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.provider.SyncStateContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +23,10 @@ import com.bw.movie.bean.LoginBean;
 import com.bw.movie.contract.ContractInterface;
 import com.bw.movie.presenter.Presenter;
 import com.bw.movie.util.EncryptUtil;
+import com.tencent.mm.opensdk.constants.ConstantsAPI;
+import com.tencent.mm.opensdk.modelmsg.SendAuth;
+import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,6 +51,12 @@ public class ShowActivity extends AppCompatActivity implements ContractInterface
 
     private SharedPreferences sp;
     private SharedPreferences.Editor editor;
+
+    // APP_ID 替换为你的应用从官方网站申请到的合法appID
+    private static final String APP_ID = "wxb3852e6a6b7d9516";
+
+    // IWXAPI 是第三方app和微信通信的openApi接口
+    private IWXAPI api;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,10 +87,29 @@ public class ShowActivity extends AppCompatActivity implements ContractInterface
             RemberPwd.setChecked(false);
         }
 
+        regToWx();
         init();
     }
 
+
+    private void regToWx() {
+        // 通过WXAPIFactory工厂，获取IWXAPI的实例
+        api = WXAPIFactory.createWXAPI(this, APP_ID, true);
+        // 将应用的appId注册到微信
+        api.registerApp(APP_ID);
+    }
+
     private void init() {
+
+        ToWechat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SendAuth.Req req = new SendAuth.Req();
+                req.scope = "snsapi_userinfo";
+                req.state = "wechat_sdk_demo_test";
+                api.sendReq(req);
+            }
+        });
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override

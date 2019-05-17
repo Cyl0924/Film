@@ -79,6 +79,13 @@ public class ScheduleActivity extends AppCompatActivity implements ContractInter
         init();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(ScheduleActivity.this,PayTicketActivity.class);
+        startActivity(intent);
+        finish();
+    }
 
     private void init(){
         LinearLayoutManager manager = new LinearLayoutManager(ScheduleActivity.this);

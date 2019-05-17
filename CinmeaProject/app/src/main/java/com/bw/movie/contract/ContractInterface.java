@@ -3,9 +3,13 @@ package com.bw.movie.contract;
 import com.bw.movie.bean.ComingBean;
 import com.bw.movie.bean.LoginBean;
 import com.bw.movie.bean.MoiveDetailsBean;
+import com.bw.movie.bean.PayTrueBean;
 import com.bw.movie.bean.RegisterBean;
 import com.bw.movie.bean.ReleaseBean;
 import com.bw.movie.bean.ReviewBean;
+import com.bw.movie.bean.WTrueBean;
+import com.bw.movie.bean.WechatBean;
+import com.bw.movie.bean.WechatLoginBean;
 import com.bw.movie.model.Model;
 
 import java.util.HashMap;
@@ -32,6 +36,10 @@ public interface ContractInterface {
         public void RequestPostModel(String url, HashMap<String,Object> map, Model.RequestPostCall requestPostCall);
         public void RequestGetModel(String url, HashMap<String,Object> map, Model.RequestGetCall requestGetCall);
         public void RequestGetModelTwo(String url, HashMap<String,Object> map, Model.RequestGetCallTwo requestGetCallTwo);
+        public void ToWechatModel(String url,String code, Model.WeiChatCall weiChatCall);
+        public void PayModel(String url, int scheduleId, int amount, String sign, Model.PayCall payCall);
+        public void WeiXinPayTrue(String url, int payType, String orderId, Model.WeiXinTrueCall weiXinTrueCall);
+        public void ZfbModel(String url, int payType, String orderId, Model.ZfbCall zfbCall);
     }
 
     public interface PresenterInterface{
@@ -47,7 +55,26 @@ public interface ContractInterface {
         public void RequestPostPresenter(String url,HashMap<String,Object> map);
         public void RequestGetPresenter(String url, HashMap<String,Object> map);
         public void RequestGetPresenterTwo(String url, HashMap<String,Object> map);
+        public void ToWechatPresenter(String url,String code);
+        public void PayPresenter(int scheduleId, int amount, String sign);
+        public void WeiXinPayTrueP(int payType, String orderId);
+        public void ZfbPresenter(int payType, String orderId);
         public void Destory();
+    }
+
+    public interface ZfbView{
+        public void returnZfb(Object obj);
+    }
+    public interface WeiXinPayTrue{
+        public void returnTrue(WTrueBean wTrueBean);
+    }
+
+    public interface PayTrueView{
+        public void returnPay(PayTrueBean payTrueBean);
+    }
+
+    public interface ToWeiChatView{
+        public void returnWechat(WechatLoginBean wechatLoginBean);
     }
 
     public interface RequestGetView{

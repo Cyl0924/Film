@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bw.movie.R;
+import com.bw.movie.util.RetrofitUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,8 +45,14 @@ public class GuidanceActivity extends AppCompatActivity {
                     imageView.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Intent intent = new Intent(GuidanceActivity.this,ShowActivity.class);
-                            startActivity(intent);
+                            boolean b =RetrofitUtil.getUtil().isNetworkConnected(GuidanceActivity.this);
+                            if(b){
+                                Intent intent = new Intent(GuidanceActivity.this,ShowActivity.class);
+                                startActivity(intent);
+                            }else{
+                                Intent intent = new Intent(GuidanceActivity.this,NetworkActivity.class);
+                                startActivity(intent);
+                            }
                         }
                     });
                 }

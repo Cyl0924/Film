@@ -7,16 +7,21 @@ import com.bw.movie.bean.CommectBean;
 import com.bw.movie.bean.FollowBean;
 import com.bw.movie.bean.LoginBean;
 import com.bw.movie.bean.MoiveDetailsBean;
+import com.bw.movie.bean.PayTrueBean;
 import com.bw.movie.bean.RegisterBean;
 import com.bw.movie.bean.ReleaseBean;
 import com.bw.movie.bean.ReviewBean;
 import com.bw.movie.bean.RoateBean;
+import com.bw.movie.bean.WTrueBean;
+import com.bw.movie.bean.WechatBean;
+import com.bw.movie.bean.WechatLoginBean;
 import com.bw.movie.contract.ContractInterface;
 import com.bw.movie.util.RetrofitUtil;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.util.HashMap;
 import okhttp3.ResponseBody;
+import retrofit2.Retrofit;
 import rx.Observer;
 
 /**
@@ -39,6 +44,13 @@ public class Model implements ContractInterface.ModelInterface {
     RequestPostCall requestPostCall;
     RequestGetCall requestGetCall;
     RequestGetCallTwo requestGetCallTwo;
+    WeiChatCall weiChatCall;
+    PayCall payCall;
+    WeiXinTrueCall weiXinTrueCall;
+    ZfbCall zfbCall;
+
+
+
 
     Gson gson = new Gson();
 
@@ -65,6 +77,7 @@ public class Model implements ContractInterface.ModelInterface {
             }
         });
     }
+
 
     //登录
     @Override
@@ -362,6 +375,118 @@ public class Model implements ContractInterface.ModelInterface {
                 }
             }
         });
+    }
+
+    @Override
+    public void ToWechatModel(String url, String code ,final WeiChatCall weiChatCall) {
+        this.weiChatCall = weiChatCall;
+        RetrofitUtil.getUtil().ToWeichat(url, code, new Observer<WechatLoginBean>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(WechatLoginBean wechatLoginBean) {
+                weiChatCall.returnWechat(wechatLoginBean);
+            }
+        });
+    }
+
+    @Override
+    public void PayModel(String url, int scheduleId, int amount, String sign, final PayCall payCall) {
+        this.payCall = payCall;
+        RetrofitUtil.getUtil().toPay(url, scheduleId, amount, sign, new Observer<PayTrueBean>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(PayTrueBean payTrueBean) {
+                payCall.returnPay(payTrueBean);
+            }
+        });
+    }
+
+    @Override
+    public void WeiXinPayTrue(String url, int payType, String orderId, final WeiXinTrueCall weiXinTrueCall) {
+        this.weiXinTrueCall = weiXinTrueCall;
+        RetrofitUtil.getUtil().toWpay(url, payType, orderId, new Observer<ResponseBody>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(ResponseBody responseBody) {
+                try {
+                    String json = responseBody.string();
+                    weiXinTrueCall.returnWeiXin(json);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+    }
+
+    @Override
+    public void ZfbModel(String url, int payType, String orderId, final ZfbCall zfbCall) {
+        this.zfbCall = zfbCall;
+        RetrofitUtil.getUtil().toWpay(url, payType, orderId, new Observer<ResponseBody>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(ResponseBody responseBody) {
+                try {
+                    String json = responseBody.string();
+                    zfbCall.returnZfb(json);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+
+    public interface ZfbCall{
+        public void returnZfb(Object obj);
+    }
+
+    public interface WeiXinTrueCall{
+        public void returnWeiXin(Object obj);
+    }
+
+    public interface PayCall{
+        public void returnPay(PayTrueBean payTrueBean);
+    }
+
+    public interface WeiChatCall{
+        public void returnWechat(WechatLoginBean wechatLoginBean);
     }
 
     public interface RequestGetCallTwo{

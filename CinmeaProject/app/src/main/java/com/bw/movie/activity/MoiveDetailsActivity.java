@@ -32,7 +32,6 @@ import com.bw.movie.contract.ContractInterface;
 import com.bw.movie.presenter.Presenter;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.gson.Gson;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -135,6 +134,15 @@ public class MoiveDetailsActivity extends AppCompatActivity implements ContractI
                 finish();
             }
         });
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(MoiveDetailsActivity.this,DetailsActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void init() {

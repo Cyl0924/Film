@@ -64,6 +64,14 @@ public class PayTicketActivity extends AppCompatActivity implements ContractInte
         init();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(PayTicketActivity.this,DetailsActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
     private void init() {
         maps = new HashMap<>();
         maps.put("movieId",App.MoiveId);

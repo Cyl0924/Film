@@ -46,7 +46,7 @@ public class ScheduleAdapter extends RecyclerView.Adapter<ScheduleAdapter.holder
         holder.YingEnd.setText(list.get(i).getEndTime()+"  end");
         holder.YingPrice.setText(list.get(i).getPrice()+"");
         holder.Show.setText("￥"+"");
-        holder.YingVery.setOnClickListener(new View.OnClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 scheduleActivity.JumpSelecSeat(list.get(i).getBeginTime(),list.get(i).getEndTime(),list.get(i).getScreeningHall(),list.get(i).getId(),list.get(i).getPrice(),list.get(i).getSeatsTotal());

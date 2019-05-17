@@ -5,12 +5,17 @@ import android.util.Log;
 import com.bw.movie.bean.ComingBean;
 import com.bw.movie.bean.LoginBean;
 import com.bw.movie.bean.MoiveDetailsBean;
+import com.bw.movie.bean.PayTrueBean;
 import com.bw.movie.bean.RegisterBean;
 import com.bw.movie.bean.ReleaseBean;
 import com.bw.movie.bean.ReviewBean;
 import com.bw.movie.bean.RoateBean;
+import com.bw.movie.bean.WTrueBean;
+import com.bw.movie.bean.WechatBean;
+import com.bw.movie.bean.WechatLoginBean;
 import com.bw.movie.contract.ContractInterface;
 import com.bw.movie.model.Model;
+import com.google.gson.Gson;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -54,6 +59,7 @@ public class Presenter<T> implements ContractInterface.PresenterInterface {
             }
         });
     }
+
 
     @Override
     public void DataPresenter(HashMap<String , Integer> map) {
@@ -162,6 +168,52 @@ public class Presenter<T> implements ContractInterface.PresenterInterface {
             public void returnGetTwo(Object obj) {
                 ContractInterface.RequestGetViewTwo requestGetViewTwo = (ContractInterface.RequestGetViewTwo) tt;
                 requestGetViewTwo.returnGetTwo(obj);
+            }
+        });
+    }
+
+    @Override
+    public void ToWechatPresenter(String url,String code) {
+        model.ToWechatModel(url, code,new Model.WeiChatCall() {
+            @Override
+            public void returnWechat(WechatLoginBean wechatLoginBean) {
+                ContractInterface.ToWeiChatView toWeiChatView = (ContractInterface.ToWeiChatView) tt;
+                toWeiChatView.returnWechat(wechatLoginBean);
+            }
+        });
+    }
+
+    @Override
+    public void PayPresenter(int scheduleId, int amount, String sign) {
+        model.PayModel("movieApi/movie/v1/verify/buyMovieTicket", scheduleId, amount, sign, new Model.PayCall() {
+            @Override
+            public void returnPay(PayTrueBean payTrueBean) {
+                ContractInterface.PayTrueView payTrueView = (ContractInterface.PayTrueView) tt;
+                payTrueView.returnPay(payTrueBean);
+            }
+        });
+    }
+
+    @Override
+    public void WeiXinPayTrueP(int payType, String orderId) {
+        model.WeiXinPayTrue("movieApi/movie/v1/verify/pay", payType, orderId, new Model.WeiXinTrueCall() {
+            @Override
+            public void returnWeiXin(Object obj) {
+                Gson gson = new Gson();
+                WTrueBean wTrueBean = gson.fromJson(obj.toString(),WTrueBean.class);
+                ContractInterface.WeiXinPayTrue weiXinPayTrue = (ContractInterface.WeiXinPayTrue) tt;
+                weiXinPayTrue.returnTrue(wTrueBean);
+            }
+        });
+    }
+
+    @Override
+    public void ZfbPresenter(int payType, String orderId) {
+        model.ZfbModel("movieApi/movie/v1/verify/pay", payType, orderId, new Model.ZfbCall() {
+            @Override
+            public void returnZfb(Object obj) {
+                ContractInterface.ZfbView zfbView = (ContractInterface.ZfbView) tt;
+                zfbView.returnZfb(obj);
             }
         });
     }

@@ -50,6 +50,14 @@ public class DetailsActivity extends AppCompatActivity implements ContractInterf
         init();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(DetailsActivity.this,PagerActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
     private void init() {
 
         FanImg.setOnClickListener(new View.OnClickListener() {

@@ -1,10 +1,18 @@
 package com.bw.movie.util;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.util.Log;
 
 import com.bw.movie.api.Api;
+import com.bw.movie.api.App;
 import com.bw.movie.bean.LoginBean;
+import com.bw.movie.bean.PayTrueBean;
 import com.bw.movie.bean.RegisterBean;
+import com.bw.movie.bean.WTrueBean;
+import com.bw.movie.bean.WechatBean;
+import com.bw.movie.bean.WechatLoginBean;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,11 +40,23 @@ public class RetrofitUtil {
 
     private RetrofitUtil(){
         retrofit = new Retrofit.Builder()
-                    .baseUrl("http://mobile.bwstudent.com/")
+                .baseUrl("http://mobile.bwstudent.com/")
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         api = retrofit.create(Api.class);
+    }
+
+    public  boolean isNetworkConnected(Context context) {
+        if (context != null) {
+            ConnectivityManager mConnectivityManager = (ConnectivityManager) context
+                    .getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo mNetworkInfo = mConnectivityManager.getActiveNetworkInfo();
+            if (mNetworkInfo != null) {
+                return mNetworkInfo.isAvailable();
+            }
+        }
+        return false;
     }
 
     public static RetrofitUtil getUtil(){
@@ -84,6 +104,21 @@ public class RetrofitUtil {
 
     public void AllGet(String url, int userId , String sessionId,HashMap<String,Object> Smap,Observer<ResponseBody> observer){
         Observable observable = api.AllData(url,userId,sessionId,Smap);
+        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+
+    public void ToWeichat(String url,String code,Observer<WechatLoginBean> observer){
+        Observable<WechatLoginBean> observable = api.toWechat(url,code);
+        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+
+    public void toPay(String url, int scheduleId, int amount, String sign, Observer<PayTrueBean> observer){
+        Observable<PayTrueBean> observable = api.toPayDown(url,App.userId,App.sessionId,scheduleId,amount,sign);
+        observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
+    }
+
+    public void toWpay(String url, int payType, String orderId, Observer<ResponseBody> observer){
+        Observable<ResponseBody> observable = api.WZhifu(url,App.userId,App.sessionId,payType,orderId);
         observable.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(observer);
     }
 

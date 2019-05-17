@@ -1,7 +1,11 @@
 package com.bw.movie.api;
 
 import com.bw.movie.bean.LoginBean;
+import com.bw.movie.bean.PayTrueBean;
 import com.bw.movie.bean.RegisterBean;
+import com.bw.movie.bean.WTrueBean;
+import com.bw.movie.bean.WechatBean;
+import com.bw.movie.bean.WechatLoginBean;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -57,5 +61,16 @@ public interface Api {
     public Observable<ResponseBody> AllData(@Url String url,@Header("userId") int userId , @Header("sessionId") String sessionId,@QueryMap HashMap<String,Object> map);
     //movieApi/movie/v1/findCinemasListByMovieId
 
+    //微信登录接口
+    @FormUrlEncoded
+    @POST
+    public Observable<WechatLoginBean> toWechat(@Url String url, @Field("code") String code);
 
+    @FormUrlEncoded
+    @POST
+    public Observable<PayTrueBean> toPayDown(@Url String url,@Header("userId") int userId , @Header("sessionId") String sessionId,@Field("scheduleId") int scheduleId,@Field("amount") int amount,@Field("sign") String sign);
+
+    @FormUrlEncoded
+    @POST
+    public Observable<ResponseBody> WZhifu(@Url String url,@Header("userId") int userId , @Header("sessionId") String sessionId,@Field("payType") int payType,@Field("orderId") String orderId);
 }
