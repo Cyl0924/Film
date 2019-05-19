@@ -73,4 +73,5 @@ public interface Api {
     @FormUrlEncoded
     @POST
     public Observable<ResponseBody> WZhifu(@Url String url,@Header("userId") int userId , @Header("sessionId") String sessionId,@Field("payType") int payType,@Field("orderId") String orderId);
+
 }

@@ -101,6 +101,7 @@ public class SelectSeatActivity extends AppCompatActivity implements ContractInt
                         // 该笔订单是否真实支付成功，需要依赖服务端的异步通知。
                         Toast.makeText(SelectSeatActivity.this, "支付成功", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(SelectSeatActivity.this,GoodsActivity.class);
+                        overridePendingTransition(R.anim.anim_right,R.anim.anim_left);
                         startActivity(intent);
                     } else {
                         // 该笔订单真实的支付结果，需要依赖服务端的异步通知。
@@ -212,6 +213,7 @@ public class SelectSeatActivity extends AppCompatActivity implements ContractInt
     public void onBackPressed() {
         super.onBackPressed();
         Intent intent = new Intent(SelectSeatActivity.this,ScheduleActivity.class);
+        overridePendingTransition(R.anim.anim_right,R.anim.anim_left);
         startActivity(intent);
         finish();
     }
@@ -228,6 +230,7 @@ public class SelectSeatActivity extends AppCompatActivity implements ContractInt
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SelectSeatActivity.this,ScheduleActivity.class);
+                overridePendingTransition(R.anim.anim_right,R.anim.anim_left);
                 startActivity(intent);
                 finish();
             }

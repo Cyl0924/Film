@@ -1,5 +1,6 @@
 package com.bw.movie.activity;
 
+import android.app.ActivityManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +10,7 @@ import android.preference.PreferenceManager;
 import android.provider.SyncStateContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -30,6 +32,7 @@ import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.internal.Utils;
 
 public class ShowActivity extends AppCompatActivity implements ContractInterface.ViewInterface {
 
@@ -91,6 +94,15 @@ public class ShowActivity extends AppCompatActivity implements ContractInterface
         init();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Toast.makeText(ShowActivity.this,"退出程序!",Toast.LENGTH_SHORT).show();
+        android.os.Process.killProcess(android.os.Process.myPid());    //获取PID
+        System.exit(0);
+    }
+
+
 
     private void regToWx() {
         // 通过WXAPIFactory工厂，获取IWXAPI的实例
@@ -98,6 +110,23 @@ public class ShowActivity extends AppCompatActivity implements ContractInterface
         // 将应用的appId注册到微信
         api.registerApp(APP_ID);
     }
+
+    public static class Utils {
+        // 两次点击按钮之间的点击间隔不能少于1000毫秒
+        private static final int MIN_CLICK_DELAY_TIME = 1000;
+        private static long lastClickTime;
+
+        public static boolean isFastClick() {
+            boolean flag = false;
+            long curClickTime = System.currentTimeMillis();
+            if ((curClickTime - lastClickTime) >= MIN_CLICK_DELAY_TIME) {
+                flag = true;
+            }
+            lastClickTime = curClickTime;
+            return flag;
+        }
+    }
+
 
     private void init() {
 
@@ -135,7 +164,10 @@ public class ShowActivity extends AppCompatActivity implements ContractInterface
                     editor.putString("pwd",null);
                     editor.commit();
                 }
-                presenterInterface.LoginPresenter(loginPhone,miPwd);
+                if(Utils.isFastClick()){
+                    //to do sth
+                    presenterInterface.LoginPresenter(loginPhone,miPwd);
+                }
             }
         });
 
@@ -144,6 +176,8 @@ public class ShowActivity extends AppCompatActivity implements ContractInterface
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ShowActivity.this,RegisterActivity.class);
+                overridePendingTransition(R.anim.anim_right,R.anim.anim_left);
+                overridePendingTransition(R.anim.anim_right,R.anim.anim_left);
                 startActivity(intent);
             }
         });
@@ -164,6 +198,7 @@ public class ShowActivity extends AppCompatActivity implements ContractInterface
             App.phones = loginBean.getResult().getUserInfo().getPhone();
             App.sex = loginBean.getResult().getUserInfo().getSex();
             Intent intent = new Intent(ShowActivity.this,PagerActivity.class);
+            overridePendingTransition(R.anim.anim_right,R.anim.anim_left);
             startActivity(intent);
             finish();
         }else {

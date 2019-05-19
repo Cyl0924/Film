@@ -48,9 +48,11 @@ public class GuidanceActivity extends AppCompatActivity {
                             boolean b =RetrofitUtil.getUtil().isNetworkConnected(GuidanceActivity.this);
                             if(b){
                                 Intent intent = new Intent(GuidanceActivity.this,ShowActivity.class);
+                                overridePendingTransition(R.anim.anim_right,R.anim.anim_left);
                                 startActivity(intent);
                             }else{
                                 Intent intent = new Intent(GuidanceActivity.this,NetworkActivity.class);
+                                overridePendingTransition(R.anim.anim_right,R.anim.anim_left);
                                 startActivity(intent);
                             }
                         }

@@ -57,6 +57,7 @@ public class PayTicketActivity extends AppCompatActivity implements ContractInte
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(PayTicketActivity.this,DetailsActivity.class);
+                overridePendingTransition(R.anim.anim_right,R.anim.anim_left);
                 startActivity(intent);
                 finish();
             }
@@ -68,6 +69,7 @@ public class PayTicketActivity extends AppCompatActivity implements ContractInte
     public void onBackPressed() {
         super.onBackPressed();
         Intent intent = new Intent(PayTicketActivity.this,DetailsActivity.class);
+        overridePendingTransition(R.anim.anim_right,R.anim.anim_left);
         startActivity(intent);
         finish();
     }
@@ -89,6 +91,7 @@ public class PayTicketActivity extends AppCompatActivity implements ContractInte
         App.CinemaName = CinemaName;
         App.CinemaAdd = CinemaAdd;
         Intent intent = new Intent(PayTicketActivity.this,ScheduleActivity.class);
+        overridePendingTransition(R.anim.anim_right,R.anim.anim_left);
         startActivity(intent);
         finish();
     }

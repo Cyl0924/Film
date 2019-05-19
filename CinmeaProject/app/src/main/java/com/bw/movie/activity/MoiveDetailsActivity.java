@@ -141,6 +141,7 @@ public class MoiveDetailsActivity extends AppCompatActivity implements ContractI
     public void onBackPressed() {
         super.onBackPressed();
         Intent intent = new Intent(MoiveDetailsActivity.this,DetailsActivity.class);
+        overridePendingTransition(R.anim.anim_right,R.anim.anim_left);
         startActivity(intent);
         finish();
     }
@@ -158,6 +159,7 @@ public class MoiveDetailsActivity extends AppCompatActivity implements ContractI
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MoiveDetailsActivity.this,DetailsActivity.class);
+                overridePendingTransition(R.anim.anim_right,R.anim.anim_left);
                 startActivity(intent);
                 finish();
             }

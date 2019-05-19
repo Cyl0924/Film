@@ -3,8 +3,205 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     tools:context=".activity.MainActivity"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
 
+    <RelativeLayout
+        android:background="@mipmap/my_bg"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_228">
+
+        <ImageView
+            android:id="@+id/ImgRemind"
+            android:layout_marginLeft="@dimen/dp_36"
+            android:layout_marginTop="@dimen/dp_36"
+            android:src="@mipmap/my_icon_remind_default"
+            android:layout_width="@dimen/dp_26"
+            android:layout_height="@dimen/dp_26" />
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/MySim"
+            fresco:roundAsCircle="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp_70"
+            android:layout_width="@dimen/dp_72"
+            android:layout_height="@dimen/dp_72" />
+
+        <TextView
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/dp_20"
+            android:id="@+id/MyNameTv"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp_160"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_32" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <!--**********************************-->
+            <LinearLayout
+                android:background="@drawable/lin_bgyin"
+                android:layout_marginTop="@dimen/dp_12"
+                android:layout_gravity="center"
+                android:layout_width="@dimen/dp_339"
+                android:layout_height="@dimen/dp_100">
+
+                <LinearLayout
+                    android:id="@+id/My_Message"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:layout_width="@dimen/dp_80"
+                    android:layout_height="@dimen/dp_80">
+
+                    <ImageView
+                        android:src="@mipmap/my_icon_messiage_default"
+                        android:layout_marginLeft="@dimen/dp_30"
+                        android:layout_marginTop="@dimen/dp_15"
+                        android:layout_width="@dimen/dp_24"
+                        android:layout_height="@dimen/dp_24" />
+
+                    <TextView
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:layout_marginLeft="@dimen/dp_15"
+                        android:text="我的信息"
+                        android:layout_width="@dimen/dp_56"
+                        android:layout_height="@dimen/dp_20" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <!--**********************************-->
+            <LinearLayout
+                android:orientation="horizontal"
+                android:background="@drawable/lin_bgyin"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_gravity="center"
+                android:layout_width="@dimen/dp_339"
+                android:layout_height="@dimen/dp_100">
+
+                <LinearLayout
+                    android:id="@+id/My_Attention"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:layout_width="@dimen/dp_80"
+                    android:layout_height="@dimen/dp_80">
+
+                    <ImageView
+                        android:src="@mipmap/my_icon_attention_default"
+                        android:layout_marginLeft="@dimen/dp_30"
+                        android:layout_marginTop="@dimen/dp_15"
+                        android:layout_width="@dimen/dp_24"
+                        android:layout_height="@dimen/dp_24" />
+
+                    <TextView
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:layout_marginLeft="@dimen/dp_15"
+                        android:text="我的关注"
+                        android:layout_width="@dimen/dp_56"
+                        android:layout_height="@dimen/dp_20" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/My_Rccord"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:layout_width="@dimen/dp_80"
+                    android:layout_height="@dimen/dp_80">
+
+                    <ImageView
+                        android:src="@mipmap/my_icon_rccord_default"
+                        android:layout_marginLeft="@dimen/dp_30"
+                        android:layout_marginTop="@dimen/dp_15"
+                        android:layout_width="@dimen/dp_24"
+                        android:layout_height="@dimen/dp_24" />
+
+                    <TextView
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:layout_marginLeft="@dimen/dp_15"
+                        android:text="购票记录"
+                        android:layout_width="@dimen/dp_56"
+                        android:layout_height="@dimen/dp_20" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+            <!--**********************************-->
+            <LinearLayout
+                android:background="@drawable/lin_bgyin"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_gravity="center"
+                android:layout_width="@dimen/dp_339"
+                android:layout_height="@dimen/dp_100">
+
+
+                <LinearLayout
+                    android:id="@+id/My_Feedback"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:layout_width="@dimen/dp_80"
+                    android:layout_height="@dimen/dp_80">
+
+                    <ImageView
+                        android:src="@mipmap/my_icon_feedback_default"
+                        android:layout_marginLeft="@dimen/dp_30"
+                        android:layout_marginTop="@dimen/dp_15"
+                        android:layout_width="@dimen/dp_24"
+                        android:layout_height="@dimen/dp_24" />
+
+                    <TextView
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:layout_marginLeft="@dimen/dp_15"
+                        android:text="意见反馈"
+                        android:layout_width="@dimen/dp_56"
+                        android:layout_height="@dimen/dp_20" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/My_Version"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="@dimen/dp_20"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:layout_width="@dimen/dp_80"
+                    android:layout_height="@dimen/dp_80">
+
+                    <ImageView
+                        android:src="@mipmap/my_icon_version_default"
+                        android:layout_marginLeft="@dimen/dp_30"
+                        android:layout_marginTop="@dimen/dp_15"
+                        android:layout_width="@dimen/dp_24"
+                        android:layout_height="@dimen/dp_24" />
+
+                    <TextView
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:layout_marginLeft="@dimen/dp_15"
+                        android:text="检查更新"
+                        android:layout_width="@dimen/dp_56"
+                        android:layout_height="@dimen/dp_20" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+            <!--**********************************-->
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

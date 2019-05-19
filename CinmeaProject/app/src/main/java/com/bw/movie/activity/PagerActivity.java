@@ -12,6 +12,7 @@ import android.widget.ImageView;
 
 import com.bw.movie.R;
 import com.bw.movie.adapter.VPAdapter;
+import com.bw.movie.api.App;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,6 +37,11 @@ public class PagerActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         final VPAdapter adapter = new VPAdapter(getSupportFragmentManager());
         VP.setAdapter(adapter);
+
+        if(App.biaoshi == 1){
+            VP.setCurrentItem(2);
+        }
+
         FilmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -141,6 +147,7 @@ public class PagerActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         Intent intent = new Intent(PagerActivity.this,ShowActivity.class);
+        overridePendingTransition(R.anim.anim_right,R.anim.anim_left);
         startActivity(intent);
     }
 }

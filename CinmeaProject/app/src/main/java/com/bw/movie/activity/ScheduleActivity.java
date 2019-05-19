@@ -73,6 +73,7 @@ public class ScheduleActivity extends AppCompatActivity implements ContractInter
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ScheduleActivity.this,PayTicketActivity.class);
+                overridePendingTransition(R.anim.anim_right,R.anim.anim_left);
                 startActivity(intent);
             }
         });
@@ -83,6 +84,7 @@ public class ScheduleActivity extends AppCompatActivity implements ContractInter
     public void onBackPressed() {
         super.onBackPressed();
         Intent intent = new Intent(ScheduleActivity.this,PayTicketActivity.class);
+        overridePendingTransition(R.anim.anim_right,R.anim.anim_left);
         startActivity(intent);
         finish();
     }

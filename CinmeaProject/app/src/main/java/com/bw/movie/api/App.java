@@ -31,9 +31,11 @@ public class App extends Application {
     public static String phones;
     public static int sex;
     public static int Windowswidth;
+
     public static List<ComingBean.ResultBean> AClist;
     public static List<ReleaseBean.ResultBean> ARlist;
     public static List<RoateBean.ResultBean> AHlist;
+
     public static int Biaoshi = 0;
     public static int MoiveId;
     public static String MoiveName;
@@ -47,6 +49,8 @@ public class App extends Application {
     public static Double SeatMoney;
     public static int DrawSeat;
     public static Context context;
+
+    public static int biaoshi = 0;
 
     @Override
     public void onCreate() {

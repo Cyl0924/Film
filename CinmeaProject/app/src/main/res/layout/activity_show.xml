@@ -26,6 +26,7 @@
                 android:layout_height="@dimen/dp_25" />
 
             <EditText
+                android:textColor="@android:color/white"
                 android:id="@+id/Login_phone"
                 android:hint="手机号"
                 android:layout_width="@dimen/dp_245"
@@ -45,6 +46,7 @@
                 android:layout_height="@dimen/dp_25" />
 
             <EditText
+                android:textColor="@android:color/white"
                 android:id="@+id/Login_pwd"
                 android:hint="密码"
                 android:layout_width="@dimen/dp_245"
@@ -78,6 +80,7 @@
                 android:layout_height="wrap_content" />
 
             <TextView
+                android:textColor="@android:color/white"
                 android:id="@+id/to_register"
                 android:layout_marginLeft="@dimen/dp_40"
                 android:textSize="@dimen/dp_14"
@@ -103,6 +106,7 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:textColor="@android:color/white"
                 android:gravity="center"
                 android:textSize="@dimen/dp_13"
                 android:text="----------------------第三方账号登录----------------------"

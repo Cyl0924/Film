@@ -78,11 +78,20 @@ public class RegisterActivity extends AppCompatActivity implements ViewInterface
     }
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(RegisterActivity.this,ShowActivity.class);
+        overridePendingTransition(R.anim.anim_right,R.anim.anim_left);
+        startActivity(intent);
+    }
+
+    @Override
     public void RegisterView(Object obj) {
         RegisterBean registerBean = (RegisterBean)obj;
         Toast.makeText(RegisterActivity.this,registerBean.getMessage(),Toast.LENGTH_SHORT).show();
         if(registerBean.getMessage().equals("注册成功")){
             Intent intent = new Intent(RegisterActivity.this,ShowActivity.class);
+            overridePendingTransition(R.anim.anim_right,R.anim.anim_left);
             startActivity(intent);
             finish();
         }

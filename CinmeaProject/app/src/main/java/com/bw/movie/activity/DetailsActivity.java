@@ -54,6 +54,7 @@ public class DetailsActivity extends AppCompatActivity implements ContractInterf
     public void onBackPressed() {
         super.onBackPressed();
         Intent intent = new Intent(DetailsActivity.this,PagerActivity.class);
+        overridePendingTransition(R.anim.anim_right,R.anim.anim_left);
         startActivity(intent);
         finish();
     }
@@ -64,6 +65,7 @@ public class DetailsActivity extends AppCompatActivity implements ContractInterf
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(DetailsActivity.this,PagerActivity.class);
+                overridePendingTransition(R.anim.anim_right,R.anim.anim_left);
                 startActivity(intent);
                 finish();
             }
@@ -138,6 +140,7 @@ public class DetailsActivity extends AppCompatActivity implements ContractInterf
 
     public void JumpDetailsActivity(int movieId){
         Intent intent = new Intent(DetailsActivity.this,MoiveDetailsActivity.class);
+        overridePendingTransition(R.anim.anim_right,R.anim.anim_left);
         intent.putExtra("moiveId",movieId);
         startActivity(intent);
         finish();
